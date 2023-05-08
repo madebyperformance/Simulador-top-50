@@ -21,11 +21,6 @@ st.set_page_config(
 st.markdown('<div style="position: fixed; bottom: 0; right: 20px;"><p style="color: white;"><span style="color:black;font-size: 21px;font-family: Barlow;">MADE BY </span><span style="color:#9966FF;font-size: 21px; font-family: Arial, sans-serif;">PERFORMANCE</span></p></div>', unsafe_allow_html=True)
 st.markdown('<div style="position: fixed; bottom: 0; right: 1360px;"><p style="color: grey; font-size: 14px;font-family: Barlow;">Criado por Pedro Dantas</p></div>', unsafe_allow_html=True)
 
-def link():
-    st.sidebar.markdown("<a href='https://madebyperformance-simuladoraai-simulador-0pnd67.streamlit.app/' target='_blank' style='text-decoration: none; font-family: Barlow; font-weight: bold; font-size: 18px; color: black;'>Acessar o simulador do Partnership.</a>", unsafe_allow_html=True)
-
-link()
-
 st.markdown(
     """
     <style>
@@ -36,6 +31,11 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+def link():
+    st.sidebar.markdown("<a href='https://madebyperformance-simuladoraai-simulador-0pnd67.streamlit.app/' target='_blank' style='text-decoration: none; font-family: Barlow; font-weight: bold; font-size: 18px; color: black;'>Acessar o simulador do Partnership.</a>", unsafe_allow_html=True)
+
+link()
 
 #df = pd.read_excel('Base Simulador Top50.xlsx')
 df = pd.read_csv('Base Simulador Top50.csv',delimiter=';',encoding='latin-1')
