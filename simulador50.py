@@ -84,8 +84,8 @@ if st.button('Calcular nova posição'):
         rank_antigo = df.loc[df['KPI4'] == ranking, 'KPI4'].iloc[0]
         rank_atual = df.loc[df['KPI4'] == ranking, 'KPI42'].iloc[0] # Selecionando o primeiro valor retornado
         st.subheader("As posições são calculadas levando em conta que todos os Assessores manterão e média de Incremento, Faturamento e NPS. É natural que a projeção não bata na vírgula mas trará uma posição bem aproximada.")
-        st.write(f"<span class='css-10trblm' style='font-size: 24px; font-family: Barlow; position: relative; left: -50px;'>Sua posição antiga era: <span style='color: #9966FF; font-weight: bold;'>122º</span></span>", unsafe_allow_html=True)
-        st.write(f"<span class='css-10trblm' style='font-size: 24px; font-family: Barlow; position: relative; left: -50px;'>Sua nova posição será: <span style='color: #9966FF; font-weight: bold;'>{int(rank_atual)}º</span></span>", unsafe_allow_html=True)
+        st.write(f">Sua posição antiga era: {int(rank_antigo)}", unsafe_allow_html=True)
+        st.write(f'Sua nova posição será: {int(rank_atual)}", unsafe_allow_html=True)
         if rank_antigo <=50:
             if rank_atual > 50:
                 st.write("<span style='font-family: Barlow; color: red;font-size: 24px;'>Cuidado! Com essa Performance você pode perder sua colocação na zona de premiação no mês que vem.</span>", unsafe_allow_html=True)
