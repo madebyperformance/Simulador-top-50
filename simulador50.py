@@ -11,6 +11,7 @@ def install(package):
     else:
         pip._internal.main(['install', package])
 install("openpyxl")
+install("xlrd")
 
 # Define as cores da página
 st.set_page_config(
