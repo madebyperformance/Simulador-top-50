@@ -29,6 +29,7 @@ link()
 
 #df = pd.read_excel('Base Simulador Top50.xlsx')
 df = pd.read_csv('Base Simulador Top50.csv',delimiter=';',encoding='latin-1')
+
 # Título do aplicativo
 st.title('Simulador TOP50')
 
@@ -36,12 +37,12 @@ st.title('Simulador TOP50')
 st.write("<span style='font-family: Barlow; font-size: 24px;'>Este aplicativo recalcula o ranking com base em uma média escolhida pelo usuário.</span>", unsafe_allow_html=True)
 # Menu de medidas
 
-ranking = (st.number_input("Sua posição atual", step=1, format="%d", key="rank_input", help="Entre com sua posição atual, você deve ter recebido por e-mail"))
-fat = st.number_input("Seu Faturamento no proximo mês",step=1, help="Insira o Faturamento que você planeja ter no próximo mês")
+ranking = (st.number_input("Sua posição atual", step=1, format="%d", key="rank_input"))
+fat = st.number_input("Seu Faturamento no proximo mês",step=1)
 fxp="{:,.0f}".format(fat) 
 fxp = fxp.replace(",",".")
 st.caption(f"Faturamento Selecionado: R$ {fxp}")
-inc = st.number_input("Seu Incremento no proximo mês",step=1, help="Insira o Incremento que você planeja ter no próximo mês")
+inc = st.number_input("Seu Incremento no proximo mês",step=1)
 fxp3="{:,.0f}".format(inc) 
 fxp3 = fxp3.replace(",",".")
 st.caption(f"Incremento Selecionado: R$ {fxp3}")
