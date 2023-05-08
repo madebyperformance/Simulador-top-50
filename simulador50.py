@@ -43,11 +43,11 @@ ranking = st.number_input("Sua posição atual",format="%.0f")
 fat = st.number_input("Seu Faturamento no proximo mês",format="%.0f")
 fxp="{:,.0f}".format(fat) 
 fxp = fxp.replace(",",".")
-st.subheader(f"Faturamento Selecionado: R${fxp}")
+st.write(f"Faturamento Selecionado: R${fxp}")
 inc = st.number_input("Seu Incremento no proximo mês",format="%.0f")
 fxp3="{:,.0f}".format(inc) 
 fxp3 = fxp3.replace(",",".")
-st.subheader(f"Incremento Selecionado: R$ {fxp3}")
+st.write(f"Incremento Selecionado: R$ {fxp3}")
 
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
