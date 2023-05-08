@@ -11,7 +11,6 @@ def install(package):
     else:
         pip._internal.main(['install', package])
 install("openpyxl")
-install("xlrd")
 
 # Define as cores da página
 st.set_page_config(
@@ -28,7 +27,8 @@ def link():
 
 link()
 
-df = pd.read_excel('Base Simulador Top50.xlsx')
+#df = pd.read_excel('Base Simulador Top50.xlsx')
+df = pd.read_csv('Base Simulador Top50.csv',delimiter=';',encoding='latin-1')
 # Título do aplicativo
 st.title('Simulador TOP50')
 
