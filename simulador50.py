@@ -40,11 +40,11 @@ st.write("<span style='font-family: Barlow; font-size: 24px;'>Este aplicativo re
 # Menu de medidas
 
 ranking = st.number_input("Sua posição atual",format="%.0f")
+st.write(f"<span style='font-family: Barlow; color: black;font-size: 24px;'>Faturamento Selecionado: R${fxp}</span>", unsafe_allow_html=True)
 fat = st.number_input("Seu Faturamento no proximo mês",format="%.0f")
 fxp="{:,.0f}".format(fat) 
 fxp = fxp.replace(",",".")
 #st.write(f"Faturamento Selecionado: R${fxp}")
-st.write(f"<span style='font-family: Barlow; color: rgb(255, 0, 0);font-size: 24px;'>Faturamento Selecionado: R${fxp}</span>", unsafe_allow_html=True)
 inc = st.number_input("Seu Incremento no proximo mês",format="%.0f")
 fxp3="{:,.0f}".format(inc) 
 fxp3 = fxp3.replace(",",".")
