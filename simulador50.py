@@ -21,11 +21,11 @@ st.set_page_config(
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-st.markdown('<div style="position: fixed; bottom: 0; right: 20px;"><p style="color: white;"><span style="color:black;font-size: 21px;font-family: Barlow;">MADE BY </span><span style="color:#9966FF;font-size: 21px; font-family: Arial, sans-serif;">PERFORMANCE</span></p></div>', unsafe_allow_html=True)
+st.markdown('<div style="position: fixed; bottom: 0; right: 20px;"><p style="color: white;"><span style="color:black;font-size: 20px;font-family: Barlow;">MADE BY </span><span style="color:#9966FF;font-size: 20px; font-family: Arial, sans-serif;">PERFORMANCE</span></p></div>', unsafe_allow_html=True)
 st.markdown('<div style="position: fixed; bottom: 0; right: 1360px;"><p style="color: grey; font-size: 14px;font-family: Barlow;">Criado por Pedro Dantas</p></div>', unsafe_allow_html=True)
 
 def link():
-    st.sidebar.markdown("<a href='https://madebyperformance-simuladoraai-simulador-0pnd67.streamlit.app/' target='_blank' style='text-decoration: none; font-family: Barlow; font-weight: bold; font-size: 25px; color: white;'>SIMULADOR PARTNERSHIP</a>", unsafe_allow_html=True)
+    st.sidebar.markdown("<a href='https://madebyperformance-simuladoraai-simulador-0pnd67.streamlit.app/' target='_blank' style='text-decoration: none; font-family: Barlow; font-weight: bold; font-size: 22px; color: white;'>SIMULADOR PARTNERSHIP</a>", unsafe_allow_html=True)
     st.sidebar.markdown("<span style='font-family: Barlow; color: white; font-size: 14px;'>Clique acima para ser redirecionado ao Simulador do Partnership do Assessor 2023.</span>", unsafe_allow_html=True)
 
 link()
@@ -40,7 +40,7 @@ df = df.rename(columns={df.columns[0]:'KPI1'})
 st.title('Simulador TOP50')
 
 # Descrição do aplicativo
-st.write("<span style='font-family: Barlow; font-size: 24px;'>Este aplicativo recalcula o ranking com base em uma média escolhida pelo usuário.</span>", unsafe_allow_html=True)
+st.write("<span style='font-family: Barlow; font-size: 20px;'>Este aplicativo recalcula o ranking com base em uma média escolhida pelo usuário.</span>", unsafe_allow_html=True)
 # Menu de medidas
 
 ranking = st.number_input("Sua posição atual",format="%.0f")
@@ -56,7 +56,7 @@ st.write(f"<span style='font-family: Barlow; color: grey;font-size: 14px;'>Incre
 
 if st.button('Calcular nova posição'):
     if ranking == 0:
-      st.write("<span style='font-family: Barlow; color: rgb(255, 0, 0);font-size: 24px;'>Por favor, insira sua posição atual para começar a simulação.</span>", unsafe_allow_html=True) 
+      st.write("<span style='font-family: Barlow; color: rgb(255, 0, 0);font-size: 20px;'>Por favor, insira sua posição atual para começar a simulação.</span>", unsafe_allow_html=True) 
     if ranking > 0:
         mes_anterior = df['KPI5'].max()
         df['KPI4'] = df['KPI4'].astype(int)
@@ -86,15 +86,15 @@ if st.button('Calcular nova posição'):
         rank_antigo = df.loc[df['KPI4'] == ranking, 'KPI4'].iloc[0]
         rank_atual = df.loc[df['KPI4'] == ranking, 'KPI42'].iloc[0] # Selecionando o primeiro valor retornado
         st.write("<span style='font-family: Barlow; color: grey;font-size: 14px;'>As posições são calculadas levando em conta que todos os Assessores manterão e média de Incremento, Faturamento e NPS. É natural que a projeção não bata na vírgula mas trará uma posição bem aproximada..</span>", unsafe_allow_html=True) 
-        st.write(f"<span style='font-family: Barlow; color: black;font-size: 25px;'>Sua posição antiga era: {rank_antigo}</span>", unsafe_allow_html=True) 
-        st.write(f"<span style='font-family: Barlow; color: black;font-size: 25px;'>Sua nova posição será: {rank_atual}</span>", unsafe_allow_html=True) 
+        st.write(f"<span style='font-family: Barlow; color: black;font-size: 20px;'>Sua posição antiga era: {rank_antigo}</span>", unsafe_allow_html=True) 
+        st.write(f"<span style='font-family: Barlow; color: black;font-size: 20px;'>Sua nova posição será: {rank_atual}</span>", unsafe_allow_html=True) 
         if rank_antigo <=50:
             if rank_atual > 50:
-                st.write("<span style='font-family: Barlow; color: red;font-size: 24px;'>Cuidado! Com essa Performance você pode perder sua colocação na zona de premiação no mês que vem.</span>", unsafe_allow_html=True)
+                st.write("<span style='font-family: Barlow; color: red;font-size: 20px;'>Cuidado! Com essa Performance você pode perder sua colocação na zona de premiação no mês que vem.</span>", unsafe_allow_html=True)
             if rank_atual <= 50:
-                st.write("<span style='font-family: Barlow; color: green;font-size: 24px;'>Com essa Performance você se mantém no TOP50 mas continue melhorando para alcançar prêmios ainda melhores!</span>", unsafe_allow_html=True)
+                st.write("<span style='font-family: Barlow; color: green;font-size: 20px;'>Com essa Performance você se mantém no TOP50 mas continue melhorando para alcançar prêmios ainda melhores!</span>", unsafe_allow_html=True)
         if rank_antigo >50:
             if rank_atual > 50:
-                st.write("<span style='font-family: Barlow; color: black;font-size: 24px;'>Com essa performance você ainda não entra no TOP50 mas continue melhorando para alcançar a zona de premiação!</span>", unsafe_allow_html=True)
+                st.write("<span style='font-family: Barlow; color: black;font-size: 20px;'>Com essa performance você ainda não entra no TOP50 mas continue melhorando para alcançar a zona de premiação!</span>", unsafe_allow_html=True)
             if rank_atual <= 50:
-                st.write("<span style='font-family: Barlow; color: green;font-size: 24px;'>Parabens! Com essa Performance você pode entrar na zona de premiação no próximo mês! </span>", unsafe_allow_html=True)
+                st.write("<span style='font-family: Barlow; color: green;font-size: 20px;'>Parabens! Com essa Performance você pode entrar na zona de premiação no próximo mês! </span>", unsafe_allow_html=True)
