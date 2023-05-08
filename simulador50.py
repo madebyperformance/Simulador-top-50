@@ -47,7 +47,7 @@ st.subheader(f"Faturamento Selecionado: R$")
 inc = st.number_input("Seu Incremento no proximo mês")
 fxp3="{:,.0f}".format(inc) 
 fxp3 = fxp3.replace(",",".")
-st.caption(f"Incremento Selecionado: R$ {fxp3}")
+st.subheader(f"Incremento Selecionado: R$ {fxp3}")
 
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
@@ -82,7 +82,7 @@ if st.button('Calcular nova posição'):
 
         rank_antigo = df.loc[df['KPI4'] == ranking, 'KPI4'].iloc[0]
         rank_atual = df.loc[df['KPI4'] == ranking, 'KPI42'].iloc[0] # Selecionando o primeiro valor retornado
-        st.caption("As posições são calculadas levando em conta que todos os Assessores manterão e média de Incremento, Faturamento e NPS. É natural que a projeção não bata na vírgula mas trará uma posição bem aproximada.")
+        st.subheader("As posições são calculadas levando em conta que todos os Assessores manterão e média de Incremento, Faturamento e NPS. É natural que a projeção não bata na vírgula mas trará uma posição bem aproximada.")
         st.write(f"<span class='css-10trblm' style='font-size: 24px; font-family: Barlow; position: relative; left: -50px;'>Sua posição antiga era: <span style='color: #9966FF; font-weight: bold;'>{int(rank_antigo)}º</span></span>", unsafe_allow_html=True)
         st.write(f"<span class='css-10trblm' style='font-size: 24px; font-family: Barlow; position: relative; left: -50px;'>Sua nova posição será: <span style='color: #9966FF; font-weight: bold;'>{int(rank_atual)}º</span></span>", unsafe_allow_html=True)
         if rank_antigo <=50:
