@@ -18,6 +18,9 @@ st.set_page_config(
     layout='wide'
 )
 
+with open('style.css') as f:
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
 st.markdown('<div style="position: fixed; bottom: 0; right: 20px;"><p style="color: white;"><span style="color:black;font-size: 21px;font-family: Barlow;">MADE BY </span><span style="color:#9966FF;font-size: 21px; font-family: Arial, sans-serif;">PERFORMANCE</span></p></div>', unsafe_allow_html=True)
 st.markdown('<div style="position: fixed; bottom: 0; right: 1360px;"><p style="color: grey; font-size: 14px;font-family: Barlow;">Criado por Pedro Dantas</p></div>', unsafe_allow_html=True)
 
@@ -49,8 +52,6 @@ fxp3="{:,.0f}".format(inc)
 fxp3 = fxp3.replace(",",".")
 st.write(f"<span style='font-family: Barlow; color: grey;font-size: 14px;'>Incremento Selecionado: R$ {fxp3}</span>", unsafe_allow_html=True)
 
-with open('style.css') as f:
-    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 if st.button('Calcular nova posição'):
     if ranking == 0:
