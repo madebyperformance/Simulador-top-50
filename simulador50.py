@@ -76,10 +76,11 @@ if st.button('Calcular nova posição'):
         df['Nota Final2'] = ((df['Ranking INC2']+df['Ranking FAT2'])/2)
         df['KPI6'] = df['Nota Final2']*df['KPI5']
         df['Nota Final2'] = df['Nota Final2'] + df['KPI6'] + df['Desempate Fat2']
-        
         df['KPI42'] = df['Nota Final2'].rank(ascending=False)
         df = df.sort_values('KPI42', ascending=True)
-
+        
+        df['KPI42'] = df['KPI42'].astype(int)
+        df['KPI4'] = df['KPI4'].astype(int)
         rank_antigo = df.loc[df['KPI4'] == ranking, 'KPI4'].iloc[0]
         rank_atual = df.loc[df['KPI4'] == ranking, 'KPI42'].iloc[0] # Selecionando o primeiro valor retornado
         st.subheader("As posições são calculadas levando em conta que todos os Assessores manterão e média de Incremento, Faturamento e NPS. É natural que a projeção não bata na vírgula mas trará uma posição bem aproximada.")
