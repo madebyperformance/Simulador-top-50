@@ -39,7 +39,7 @@ st.title('Simulador TOP50')
 st.write("<span style='font-family: Barlow; font-size: 24px;'>Este aplicativo recalcula o ranking com base em uma média escolhida pelo usuário.</span>", unsafe_allow_html=True)
 # Menu de medidas
 
-ranking = (st.number_input("Sua posição atual", step=1, key="rank_input"))
+ranking = (st.number_input("Sua posição atual"))
 fat = st.number_input("Seu Faturamento no proximo mês",step=1)
 fxp="{:,.0f}".format(fat) 
 fxp = fxp.replace(",",".")
