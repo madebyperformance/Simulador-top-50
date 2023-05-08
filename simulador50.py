@@ -26,6 +26,17 @@ def link():
 
 link()
 
+st.markdown(
+    """
+    <style>
+    .sidebar .sidebar-content {
+        background-color: #9966ff;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 #df = pd.read_excel('Base Simulador Top50.xlsx')
 df = pd.read_csv('Base Simulador Top50.csv',delimiter=';',encoding='latin-1')
 df['KPI5'] = df['KPI5'].astype('float64')
