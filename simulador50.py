@@ -17,16 +17,6 @@ st.set_page_config(
     page_icon=':bar_chart:',
     layout='wide'
 )
-st.markdown(
-    """
-    <style>
-    .sidebar .sidebar-content {
-        background-color: #9966ff;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 
 st.markdown('<div style="position: fixed; bottom: 0; right: 20px;"><p style="color: white;"><span style="color:black;font-size: 21px;font-family: Barlow;">MADE BY </span><span style="color:#9966FF;font-size: 21px; font-family: Arial, sans-serif;">PERFORMANCE</span></p></div>', unsafe_allow_html=True)
 st.markdown('<div style="position: fixed; bottom: 0; right: 1360px;"><p style="color: grey; font-size: 14px;font-family: Barlow;">Criado por Pedro Dantas</p></div>', unsafe_allow_html=True)
