@@ -32,11 +32,9 @@ link()
 
 #df = pd.read_excel('Base Simulador Top50.xlsx')
 df = pd.read_csv('Base Simulador Top50.csv',delimiter=';',encoding='latin-1')
-df = df[['KPI1','KPI2']].replace(",",".")
 df['KPI5'] = df['KPI5'].astype('float64')
 df = df.fillna(0)
 df = df.rename(columns={df.columns[0]:'KPI1'})
-df = df['KPI1'].astype('float64')
 
 # Título do aplicativo
 st.title('Simulador TOP50')
