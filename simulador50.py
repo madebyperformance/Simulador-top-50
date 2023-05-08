@@ -3,6 +3,15 @@ import pandas as pd
 import datetime
 import io
 
+import pip
+
+def install(package):
+    if hasattr(pip, 'main'):
+        pip.main(['install', package])
+    else:
+        pip._internal.main(['install', package])
+install("openpyxl")
+
 # Define as cores da página
 st.set_page_config(
     page_title='Simulador TOP50',
@@ -83,6 +92,3 @@ if st.button('Calcular nova posição'):
                 st.write("<span style='font-family: Barlow; color: black;font-size: 24px;'>Com essa performance você ainda não entra no TOP50 mas continue melhorando para alcançar a zona de premiação!</span>", unsafe_allow_html=True)
             if rank_atual <= 50:
                 st.write("<span style='font-family: Barlow; color: green;font-size: 24px;'>Parabens! Com essa Performance você pode entrar na zona de premiação no próximo mês! </span>", unsafe_allow_html=True)
-
-
-# Adiciona o estilo para posicionar o texto no canto inferior direito
