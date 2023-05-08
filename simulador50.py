@@ -25,7 +25,7 @@ st.markdown('<div style="position: fixed; bottom: 0; right: 20px;"><p style="col
 st.markdown('<div style="position: fixed; bottom: 0; right: 1360px;"><p style="color: grey; font-size: 14px;font-family: Barlow;">Criado por Pedro Dantas</p></div>', unsafe_allow_html=True)
 
 def link():
-    st.sidebar.markdown("<a href='https://madebyperformance-simuladoraai-simulador-0pnd67.streamlit.app/' target='_blank' style='text-decoration: none; font-family: Barlow; font-weight: bold; font-size: 18px; color: black;'>Acessar o simulador do Partnership.</a>", unsafe_allow_html=True)
+    st.sidebar.markdown("<a href='https://madebyperformance-simuladoraai-simulador-0pnd67.streamlit.app/' target='_blank' style='text-decoration: none; font-family: Barlow; font-weight: bold; font-size: 15px; color: white;'>Acessar o simulador do Partnership.</a>", unsafe_allow_html=True)
 
 link()
 
