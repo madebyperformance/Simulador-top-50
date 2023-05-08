@@ -29,6 +29,7 @@ link()
 
 #df = pd.read_excel('Base Simulador Top50.xlsx')
 df = pd.read_csv('Base Simulador Top50.csv',delimiter=';',encoding='latin-1')
+df = df['KPI5'].astype('float64')
 df = df.fillna(0)
 
 # Título do aplicativo
