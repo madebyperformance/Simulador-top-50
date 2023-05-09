@@ -6,6 +6,7 @@
     background-position: 4px 20px;
 }
 
+
 /* Card */
 /* Adapted from https://startbootstrap.com/theme/sb-admin-2 */
 div.css-1r6slb0.e1tzin5v2 {
@@ -19,10 +20,18 @@ box-shadow: 0 0.15rem 1.75rem 0 rgba(70, 48, 23, 0.15) !important;
 
 }
 
+label.css-mkogse.e16fv1kl2 {
+color: #9966FF !important;
+font-weight: 700 !important;
+text-transform: uppercase !important;
+}
+
+
 /* Move block container higher */
 div.block-container.css-18e3th9.egzxvld2 {
 margin-top: -5em;
 }
+
 
 /* Hide hamburger menu and footer */
 div.css-r698ls.e8zbici2 {
@@ -41,20 +50,26 @@ div.vg-tooltip-element {
 display: none;
 }
 
+
 #MainMenu {
+
 visibility: hidden ;
+
 }
 
+
 footer {visibility: hidden;}
+
+
 
 footer:after{
             visibility: visible;
 }
 
-.css-5aekhv.e1tzin5v2 {
-    font-family: 'Barlow', sans-serif;
-    color: #9966FF;
+.css-145kmo2.effi0qh0 {
     font-size: 25px;
+    font-family: 'Barlow', sans-serif;
+    color: #9966FF ;
     font-weight: bold;
 }
 
