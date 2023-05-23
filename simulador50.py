@@ -31,7 +31,9 @@ def link():
 link()
 
 df = pd.read_csv('Base Simulador Top50.csv',delimiter=',',encoding='latin-1')
-df['KPI5'] = pd.to_datetime(df['KPI5'], errors='coerce')
+df['KPI5'] = pd.to_datetime(df['KPI5'])
+maior_data = df['KPI5'].max()
+mes_anterior = maior_data.month
 df = df.fillna(0)
 df = df.rename(columns={df.columns[0]:'KPI1'})
 
@@ -57,7 +59,6 @@ if st.button('Calcular nova posição'):
     if ranking == 0:
       st.write("<span style='font-family: Barlow; color: rgb(255, 0, 0);font-size: 20px;'>Por favor, insira sua posição atual para começar a simulação.</span>", unsafe_allow_html=True) 
     if ranking > 0:
-        mes_anterior = df['KPI5'].max().timestamp()
         df['KPI4'] = df['KPI4'].astype(int)
         df['Fat esperado'] = df['KPI2'] / mes_anterior
         df['Fat esperado'] = df['KPI2'] + df['Fat esperado']
