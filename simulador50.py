@@ -30,7 +30,7 @@ def link():
 
 link()
 
-df = pd.read_csv('Base Simulador Top50.csv',delimiter=';',encoding='latin-1')
+df = pd.read_csv('Base Simulador Top50.csv',delimiter=',',encoding='latin-1')
 df['KPI5'] = pd.to_datetime(df['KPI5'], errors='coerce')
 df = df.fillna(0)
 df = df.rename(columns={df.columns[0]:'KPI1'})
