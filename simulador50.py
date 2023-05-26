@@ -3,6 +3,9 @@ import pandas as pd
 import datetime
 import io
 import pip
+from PIL import Image
+
+im = Image.open(r'logo.png')
 
 def install(package):
     if hasattr(pip, 'main'):
@@ -14,7 +17,7 @@ install("openpyxl")
 # Define as cores da página
 st.set_page_config(
     page_title='Simulador TOP50',
-    page_icon=':bar_chart:',
+    page_icon=im,
     layout='wide'
 )
 
