@@ -34,9 +34,7 @@ def link():
 link()
 
 df = pd.read_csv('Base Simulador Top50.csv',delimiter=',',encoding='latin-1')
-df['KPI5'] = pd.to_datetime(df['KPI5'])
-maior_data = df['KPI5'].max()
-mes_anterior = maior_data.month
+mes_anterior = df['KPI5'].max()
 df = df.fillna(0)
 df = df.rename(columns={df.columns[0]:'KPI1'})
 
