@@ -33,9 +33,13 @@ def link():
 link()
 
 df = pd.read_csv('Base Simulador Top50.csv',delimiter=',',encoding='latin-1')
-mes_anterior = df['KPI5'].max()
+df['KPI5'] = pd.to_datetime(df['KPI5'])
+df['KPI5'] = df['KPI5'].dt.strftime('%m')
+df['KPI5'] = df['KPI5'].astype(int)
+mes_anterior = (df['KPI5'].max())+1
 df = df.fillna(0)
 df = df.rename(columns={df.columns[0]:'KPI1'})
+
 
 # Título do aplicativo
 st.title('Simulador TOP50')
@@ -44,47 +48,59 @@ st.title('Simulador TOP50')
 st.write("<span style='font-family: Barlow; font-size: 20px;'>Este aplicativo recalcula o ranking com base em uma média escolhida pelo usuário.</span>", unsafe_allow_html=True)
 # Menu de medidas
 
+
 ranking = st.number_input("Sua posição atual",format="%.0f")
 fat = st.number_input("Seu Faturamento no proximo mês",format="%.0f")
 fxp="{:,.0f}".format(fat) 
 fxp = fxp.replace(",",".")
 st.write(f"<span style='font-family: Barlow; color: grey;font-size: 14px;'>Faturamento Selecionado: R${fxp}</span>", unsafe_allow_html=True)
+
 inc = st.number_input("Seu Incremento no proximo mês",format="%.0f")
 fxp3="{:,.0f}".format(inc) 
 fxp3 = fxp3.replace(",",".")
 st.write(f"<span style='font-family: Barlow; color: grey;font-size: 14px;'>Incremento Selecionado: R$ {fxp3}</span>", unsafe_allow_html=True)
 
-
 if st.button('Calcular nova posição'):
     if ranking == 0:
       st.write("<span style='font-family: Barlow; color: rgb(255, 0, 0);font-size: 20px;'>Por favor, insira sua posição atual para começar a simulação.</span>", unsafe_allow_html=True) 
     if ranking > 0:
+        
         df['KPI4'] = df['KPI4'].astype(int)
         df['Fat esperado'] = df['KPI2'] / mes_anterior
         df['Fat esperado'] = df['KPI2'] + df['Fat esperado']
+        
         df['Inc esperado'] = df['KPI1'] / mes_anterior
         df['Inc esperado'] = df['KPI1'] + df['Inc esperado']
-        df['NPS esperado'] = df['KPI3']
+        
+        
         df.loc[df['KPI4'] == ranking, 'Fat esperado'] = df.loc[df['KPI4'] == ranking, 'KPI2'] + fat
         df.loc[df['KPI4'] == ranking, 'Inc esperado'] = df.loc[df['KPI4'] == ranking, 'KPI1'] + inc
-        df['KPI5'] = df['NPS esperado'].apply(lambda x: 0.05 if x >= 90 else 0)
-
-        # Criar a coluna com os rankings
-        df['Ranking INC2'] = df['Inc esperado'].rank(ascending=True)
-        df['Ranking FAT2'] = df['Fat esperado'].rank(ascending=True)
-        df['Desempate Fat2'] = df['Fat esperado']/10000000
-
-        #KPI4
-        df['Nota Final2'] = ((df['Ranking INC2']+df['Ranking FAT2'])/2)
-        df['KPI6'] = df['Nota Final2']*df['KPI5']
-        df['Nota Final2'] = df['Nota Final2'] + df['KPI6'] + df['Desempate Fat2']
-        df['KPI42'] = df['Nota Final2'].rank(ascending=False)
-        df = df.sort_values('KPI42', ascending=True)
         
+
+        #Pegando os valores mínimos e máximos
+        Valor_minimo_incremento = df['Inc esperado'].min()
+        Valor_maximo_incremento = df['Inc esperado'].max()
+
+        Valor_minimo_fat = df['Fat esperado'].min()
+        Valor_maximo_fat = df['Fat esperado'].max()
+
+
+        # Aplicando a fórmula
+        df['Pontuação Incremento'] = ((df['Inc esperado'] - Valor_minimo_incremento) / (Valor_maximo_incremento - Valor_minimo_incremento) * 2 - 1 + 1) * 100
+        df['Pontuação Faturamento'] = ((df['Fat esperado'] - Valor_minimo_fat) / (Valor_maximo_fat - Valor_minimo_fat) * 2 - 1 + 1) * 100
+        df['Desempate Fat'] = df['Fat esperado']/10000000
+        
+        
+        df['Nota Final'] = (df['Pontuação Incremento']*0.3)+(df['Pontuação Faturamento']*0.7)+(df['Desempate Fat'])
+        df['KPI42'] = df['Nota Final'].rank(ascending=False)
+        df = df.sort_values('KPI42', ascending=True)
+
         df['KPI42'] = df['KPI42'].astype(int)
         df['KPI4'] = df['KPI4'].astype(int)
         rank_antigo = df.loc[df['KPI4'] == ranking, 'KPI4'].iloc[0]
         rank_atual = df.loc[df['KPI4'] == ranking, 'KPI42'].iloc[0] # Selecionando o primeiro valor retornado
+        
+        
         st.write("<span style='font-family: Barlow; color: grey;font-size: 14px;'>As posições são calculadas levando em conta que todos os Assessores manterão e média de Incremento, Faturamento e NPS. É natural que a projeção não bata na vírgula mas trará uma posição bem aproximada..</span>", unsafe_allow_html=True) 
         st.write(f"<span style='font-family: Barlow; color: black;font-size: 20px;'>Sua posição antiga era: </span><span style='font-family: Barlow; font-weight: bold; color: #9966ff;font-size: 20px;'>{rank_antigo}º</span>", unsafe_allow_html=True)
         st.write(f"<span style='font-family: Barlow; color: black;font-size: 20px;'>Sua nova posição será: </span><span style='font-family: Barlow; font-weight: bold; color: #9966ff;font-size: 20px;'>{rank_atual}º</span>", unsafe_allow_html=True) 
